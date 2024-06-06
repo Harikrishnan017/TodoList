@@ -1,14 +1,18 @@
 package dao;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+//import java.text.DateFormat;
+//import java.time.LocalDate;
+//import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Blob;
+
 import javax.sql.rowset.serial.SerialBlob;
 
 import dto.taskDto;
@@ -63,22 +67,23 @@ public class dao {
 	}
 	
 	
-	//savetask
+	//save task
 	
 	public int saveTask(taskDto t) throws ClassNotFoundException, SQLException {
 		Connection();
-		PreparedStatement pst=c.prepareStatement("insert into task values(?,?,?,?,?)");
+		PreparedStatement pst=c.prepareStatement("insert into task values(?,?,?,?,?,?)");
 		pst.setInt(1, t.getTaskid());
-		pst.setString(2, t.getTaskDescription());
-		pst.setString(3, t.getTaskPriority());
+		pst.setString(2, t.getTaskTitle());
+		pst.setString(3, t.getTaskDescription());
+		pst.setString(4, t.getTaskPriority());
 		Date d=Date.valueOf(t.getTaskDueDate());
-		pst.setDate(4, d);
-		pst.setInt(5, t.getUserId());
+		pst.setDate(5, d);
+		pst.setInt(6, t.getUserId());
 		return pst.executeUpdate();
 		
 	}
 	
-	//deletetask
+	//delete task
 	
 	public int deleteTask(int taskid) throws ClassNotFoundException, SQLException {
 		Connection();
@@ -88,49 +93,52 @@ public class dao {
 		
 	}
 	
+	//update task
 	
-	//find all task
-	
-	public List<taskDto>findTask(taskDto t) throws ClassNotFoundException, SQLException{
-		List<taskDto> taskList=new ArrayList<taskDto>();
+	public int updateTask(taskDto t) throws ClassNotFoundException, SQLException {
 		Connection();
-		PreparedStatement pst=c.prepareStatement("select * from task");
-		ResultSet rst=pst.executeQuery();
+		PreparedStatement pst=c.prepareStatement("update task set taskTitle=?, taskDescription=?, taskPriority=?,taskDuedate=?,userId=? where taskid=?");
 		
-		taskDto task=new taskDto();
-		while(rst.next()) {
-			task.setTaskid(rst.getInt(1));
-			task.setTaskDescription(rst.getString(2));
-			task.setTaskPriority(rst.getString(3));
-//			Date d=rst.getDate(4);
-//			String date=d.get
-			task.setUserId(rst.getInt(5));
-			return taskList;
-		}
-		
-		return null;
+		pst.setString(1, t.getTaskTitle());
+		pst.setString(2, t.getTaskDescription());
+		pst.setString(3, t.getTaskPriority());
+		Date d=Date.valueOf(t.getTaskDueDate());
+		pst.setDate(4, d);
+		pst.setInt(5, t.getUserId());		
+		pst.setInt(6, t.getTaskid());
+
+		return pst.executeUpdate();
 		
 	}
 	
-	//update 
 	
+	//find all task
 	
+	public List<taskDto> findTask(int userId) throws ClassNotFoundException, SQLException{
+		List<taskDto> taskList=new ArrayList<taskDto>();
+		Connection();
+		PreparedStatement pst=c.prepareStatement("select * from task where userId=?");
+		pst.setInt(1, userId);
+		ResultSet rst=pst.executeQuery();
 	
+		while(rst.next()) {
+			taskDto tasks=new taskDto(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),rst.getString(5),rst.getInt(6));
+			taskList.add(tasks);
+		}
+		return taskList;
+	} 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public taskDto findbyid(int Id) throws ClassNotFoundException, SQLException{
+		Connection();
+		PreparedStatement pst=c.prepareStatement("select * from task where taskid=?");
+		pst.setInt(1, Id);
+		ResultSet rst=pst.executeQuery();
+		taskDto tasks=new taskDto();
+		while(rst.next()) {
+			tasks=new taskDto(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),rst.getString(5),rst.getInt(6));
+		}
+		return tasks;
+	} 
 	
 	
 	

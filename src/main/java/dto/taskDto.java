@@ -2,12 +2,27 @@ package dto;
 
 public class taskDto {
 	private int taskid;
+	private String taskTitle;
 	private String taskDescription;
 	private String taskPriority;
 	private String taskDueDate;
 	private int userId;
 	
+	public taskDto(int taskid, String taskTitle, String taskDescription, String taskPriority, String taskDueDate,
+			int userId) {
+		super();
+		this.taskid = taskid;
+		this.taskTitle = taskTitle;
+		this.taskDescription = taskDescription;
+		this.taskPriority = taskPriority;
+		this.taskDueDate = taskDueDate;
+		this.userId = userId;
+	}
 	
+	public taskDto() {
+
+	}
+
 	public int getTaskid() {
 		return taskid;
 	}
@@ -37,6 +52,12 @@ public class taskDto {
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+	public String getTaskTitle() {
+		return taskTitle;
+	}
+	public void setTaskTitle(String taskTitle) {
+		this.taskTitle = taskTitle;
 	}
 	
 	

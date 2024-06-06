@@ -8,7 +8,20 @@ public class userDto {
 	private String userPassword;
 	private byte[] userimage;
 	
+	public userDto() {
+		
+	}
 	
+	public userDto(int userId, String userName, String userEmail, long userContact, String userPassword,
+			byte[] userimage) {
+		super();
+		this.userId = userId;
+		this.userName = userName;
+		this.userEmail = userEmail;
+		this.userContact = userContact;
+		this.userPassword = userPassword;
+		this.userimage = userimage;
+	}
 	public int getUserId() {
 		return userId;
 	}
