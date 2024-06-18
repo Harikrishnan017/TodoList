@@ -128,6 +128,8 @@ public class dao {
 		return taskList;
 	} 
 	
+	//find task based on id
+	
 	public taskDto findbyid(int Id) throws ClassNotFoundException, SQLException{
 		Connection();
 		PreparedStatement pst=c.prepareStatement("select * from task where taskid=?");
@@ -140,6 +142,38 @@ public class dao {
 		return tasks;
 	} 
 	
+	// find user based on id
+	
+	public userDto findusingid(int Id) throws ClassNotFoundException, SQLException{
+		Connection();
+		PreparedStatement pst=c.prepareStatement("select * from userdetails where userId=?");
+		pst.setInt(1, Id);
+		ResultSet rst=pst.executeQuery();
+		userDto users=new userDto();
+		while(rst.next()) {
+			users=new userDto(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getLong(4), rst.getString(5), rst.getBytes(6));
+		}
+		return users;
+	} 
+	
+	
+	// update user
+	
+
+	public int updateUser(userDto user) throws ClassNotFoundException, SQLException {
+		Connection();
+		PreparedStatement pst=c.prepareStatement("update userdetails set Username=?, UserEmail=?,UserContact=?,UserPassword=?,UserImage=? where UserId=? ");
+		
+		pst.setString(1, user.getUserName());
+		pst.setString(2, user.getUserEmail());
+		pst.setLong(3, user.getUserContact());
+		pst.setString(4, user.getUserPassword());
+		Blob image=new SerialBlob(user.getUserimage());
+		pst.setBlob(5, image);
+		pst.setInt(6, user.getUserId());
+		return pst.executeUpdate();
+		
+	}
 	
 	
 }

@@ -57,24 +57,20 @@ table,th,td {
 	margin-top: 12px;
 	border-radius: 15px;
 	background-color: white;
-	box-shadow: 1px 1px ;
+	box-shadow: 1px 1px;
 }
 .anchor:hover {
 	background-color: gray;
 	cursor: pointer;
 }
 
-.body{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 .contain{
 	width: 500px;
 	padding: 15px;
 	border: 1px solid #eee;
-	margin-top: 30px;
-	border-radius: 20px;
+	margin-top: 70px;
+	margin-left: 400px;
+	border-radius: 30px;
 }
 h1 {
 	text-align: center;

@@ -17,8 +17,8 @@
 User Id: <input type="text" name="id" placeholder="Enter user Id"> <br> <br>
 User Name: <input type="text" name="name" placeholder="Enter user name"> <br> <br>
 User Email: <input type="text" name="email" placeholder="Enter user Email"> <br> <br>
-User Contact: <input type="number" name="contact" placeholder="Enter user contact"> <br> <br>
-User Password: <input type="password" name="password" placeholder="Enter password"> <br> <br>
+User Contact: <input type="text" name="contact" placeholder="Enter user contact"> <br> <br>
+User Password: <input type="text" name="password" placeholder="Enter password"> <br> <br>
 User Image: <input type="file" name="image" placeholder="Upload image"> <br> <br>
 <button>Submit</button>
 

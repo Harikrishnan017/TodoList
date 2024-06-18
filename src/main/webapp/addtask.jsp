@@ -1,11 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ include file="navigation.html" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Add task</title>
 <link rel="stylesheet" href="style.css">
+<style>
+nav{
+	display: block;
+}
+.a{
+	line-height: 20px;
+	margin-left: 20px;
+	margin-top: 0px;
+}
+</style>
 </head>
 <body class="body">
 <div class="contain" id="contains">

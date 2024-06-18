@@ -15,7 +15,7 @@
 <form action="update" method="post">
 	<h1><u> Update task</u></h1>
 
-	Task id: <input type="text" name="taskid" placeholder="Enter task Id" value="<%= task.getTaskid() %>" > <br> <br>
+	Task id: <input type="text" name="taskid" placeholder="Enter task Id" value="<%= task.getTaskid() %>" hidden="true"> <br> <br>
 	Task Title: <input type="text" name="tasktitle" placeholder="Enter task title" value="<%= task.getTaskTitle() %>"> <br> <br>
 	Task Description: <input type="text" name="taskdesc" placeholder="Enter task description" value="<%= task.getTaskDescription() %>"> <br> <br>
 	Current task priority is: <p> <b><%= task.getTaskPriority() %> </b></p>

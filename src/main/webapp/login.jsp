@@ -14,7 +14,7 @@
 <form action="login" method="post">
 
 Email: <input type="email" name="email" placeholder="Enter your email"> <br> <br> 
-Password: <input type="password" name="password" placeholder="Enter your password"> <br> <br>
+Password: <input type="text" name="password" placeholder="Enter your password"> <br> <br>
 <button>Submit</button>
 </form>
 

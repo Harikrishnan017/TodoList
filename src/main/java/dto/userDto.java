@@ -22,6 +22,7 @@ public class userDto {
 		this.userPassword = userPassword;
 		this.userimage = userimage;
 	}
+
 	public int getUserId() {
 		return userId;
 	}
